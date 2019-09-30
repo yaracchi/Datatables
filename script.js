@@ -1,19 +1,34 @@
     
-    var $  = require( 'jquery' );
-    var dt = require( 'datatables.net' )();
-    var buttons = require( 'datatables.net-buttons' )();
+   var $       = require( 'jquery' );
+   var dt      = require( 'datatables.net' )( window, $ );
+   var buttons = require( 'datatables.net-buttons' )( window, $ );
+
     var dataset = [
-        ["---","---","--","--","--","--","--","--","--","--","--","--","--"],
-        ["---","---","--","--","--","--","--","--","--","--","--","--","--"],
-        ["---","---","--","--","--","--","--","--","--","--","--","--","--"],
-        ["---","---","--","--","--","--","--","--","--","--","--","--","--"],
+        ["A","---","--","--","--","--","--","--","--","--","--","--","--"],
+        ["B","---","--","--","--","--","--","--","--","--","--","--","--"],
+        ["C","---","--","--","--","--","--","--","--","--","--","--","--"],
+        ["D","---","--","--","--","--","--","--","--","--","--","--","--"],
     ];
-    //tabletop gets data from google sheet api 
+
+    var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSP04OPVIT2nLNUfqjmyHthSTFTwnmWAqLhN4uHgMEy5h4nmHJ-4x5j8e71G5I5_waC82mza77IZmIJ/pubhtml';
+//google sheets
+  function init() {
+    Tabletop.init( { key: '1BJk9riIpNyulObL-B3UfKcWr2KdmA6UFGMZXNmeRM-0',
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    alert('Successfully processed!')
+    console.log(data);
+  }
+
+  window.addEventListener('DOMContentLoaded', init)
 //ps this is on react --look for equal in JS
 //google sheets
 /*componentDidMount() {
     Tabletop.init({
-      key: '1_f0LP10YhzHRqcaDv3rXprQfFR_0wDjWKn-cDJwZ1JU',
+      key: '1BJk9riIpNyulObL-B3UfKcWr2KdmA6UFGMZXNmeRM-0',
       callback: googleData => {
         this.setState({
           dataset: googleData
