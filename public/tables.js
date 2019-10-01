@@ -1,7 +1,7 @@
     
-   var $       = require( 'jquery' );
-   var dt      = require( 'datatables.net' )( window, $ );
-   var buttons = require( 'datatables.net-buttons' )( window, $ );
+ //  var $       = require( 'jquery' );
+ //  var dt      = require( 'datatables.net' )( window, $ );
+ //  var buttons = require( 'datatables.net-buttons' )( window, $ );
 
     var dataset = [
         ["A","---","--","--","--","--","--","--","--","--","--","--","--"],
