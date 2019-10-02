@@ -1,4 +1,3 @@
-    
  //  var $       = require( 'jquery' );
  //  var dt      = require( 'datatables.net' )( window, $ );
  //  var buttons = require( 'datatables.net-buttons' )( window, $ );
@@ -20,28 +19,26 @@
 
   function showInfo(data, tabletop) {
     console.log(data);
+    //fill dataset with data array(one column here) i got from tabletop
     for (e of data["opportunities-gv-data"].elements) {
     	dataset.push(e);
     }
+    //datatable have dataset infos 
     $('#table_id').DataTable({
       // "paging": false,
        data: dataset,
        columns: [
        {title: "Project Name", data:"title"},
+       {title: "Program", data:"programmesshortname"},
        {title: "SDG", data: "sdginfosdgtargetgoalindex"},
-       {title: "LC"},
-       {title: "Duration"},
-       {title: "Start date - End date"},
-       {title: "OPP Link"},
-       {title: "Opportunity Status"},
-       {title: "TN Fees"},
-       {title: "Accomondation type"},
-       {title: "Meals/Day"},
-       {title: "#Opening"},
-       {title: "#Opening available"},
-       {title: "Promotional Materials drive (Posters, videos...etc)"},
-
-
+       {title: "LC",data:"hostlcfullname"},
+       {title: "Duration",data:"duration"},
+       {title: "Start date",data:"earlieststartdate"},
+       {title: "End date",data:"latestenddate"},
+       //{title: "Opportunity Link" },   
+       {title: "Opening", data:"openings"},
+       {title: "Available Opening", data:"availableopenings"},
+       {title: "Meals/Day", data:"logisticsinfofoodcovered"},
        ]}
     );	
   }
