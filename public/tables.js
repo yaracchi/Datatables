@@ -1,13 +1,10 @@
- //  var $       = require( 'jquery' );
- //  var dt      = require( 'datatables.net' )( window, $ );
- //  var buttons = require( 'datatables.net-buttons' )( window, $ );
 
-    var dataset = [];
+  var dataset = [];
 
 
 
-    var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1asg1epgBjVE4xACzO2ok4m7zOu9d1tmUYGbBc20JKns/pubhtml';
-//google sheets
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1asg1epgBjVE4xACzO2ok4m7zOu9d1tmUYGbBc20JKns/pubhtml';
+  //google sheets
   function init() {
     Tabletop.init( { key: publicSpreadsheetUrl,
                      callback: showInfo,
@@ -19,11 +16,10 @@
 
   function showInfo(data, tabletop) {
     console.log(data);
-    //fill dataset with data array(one column here) i got from tabletop
+    
     for (e of data["opportunities-gv-data"].elements) {
     	dataset.push(e);
     }
-    //datatable have dataset infos 
     $('#table_id').DataTable({
       // "paging": false,
        data: dataset,
@@ -39,7 +35,10 @@
        {title: "Opening", data:"openings"},
        {title: "Available Opening", data:"availableopenings"},
        {title: "Meals/Day", data:"logisticsinfofoodcovered"},
-       ]}
+       ],
+       className: 'mdl-data-table__cell--non-numeric'
+      // "order": [[ 1, "desc" ]]
+      }
     );	
   }
 
