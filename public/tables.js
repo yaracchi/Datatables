@@ -18,20 +18,32 @@
     console.log(data);
     
     for (e of data["opportunities-gv-data"].elements) {
-    	dataset.push(e);
+      dataset.push(e);
+      console.log(e);
     }
+    //delete unnecessary lines 
+    var dataset1 = dataset.filter(function(obj){
+      return obj.title !== "/title";
+     });
+   
+    //link update
+     dataset1.forEach(myFunction);
+     function myFunction(obj, index,dataset1) {
+     dataset1[index].id = "https://aiesec.org/opportunity/"+ obj.id ;
+    };
+    
     $('#table_id').DataTable({
       // "paging": false,
-       data: dataset,
+       data: dataset1,
        columns: [
-       {title: "Project Name", data:"title"},
        {title: "Program", data:"programmesshortname"},
+       {title: "Project Name", data:"title"},
        {title: "SDG", data: "sdginfosdgtargetgoalindex"},
        {title: "LC",data:"hostlcfullname"},
        {title: "Duration",data:"duration"},
        {title: "Start date",data:"earlieststartdate"},
        {title: "End date",data:"latestenddate"},
-       //{title: "Opportunity Link" },   
+       {title: "Opportunity Link",data:"id" },   
        {title: "Opening", data:"openings"},
        {title: "Available Opening", data:"availableopenings"},
        {title: "Meals/Day", data:"logisticsinfofoodcovered"},
