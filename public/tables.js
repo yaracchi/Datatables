@@ -36,6 +36,7 @@
     };
     $('#table_id').DataTable({
       // "paging": false,
+      responsive: true,
        data: dataset1,
        columns: [
        {title: "Program", data:"programmesshortname"},
