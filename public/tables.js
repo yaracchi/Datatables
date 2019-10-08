@@ -26,11 +26,15 @@
       return obj.title !== "/title";
      });
    
-    //link update
+    //link update + remove hour from date
      dataset1.forEach(myFunction);
      function myFunction(obj, index,dataset1) {
      dataset1[index].id = "https://aiesec.org/opportunity/"+ obj.id ;
+     dataset1[index].earlieststartdate = obj.earlieststartdate.replace("T00:00:00Z","") ;
+     dataset1[index].latestenddate = obj.latestenddate.replace("T00:00:00Z","") ;
     };
+  
+}
     
     $('#table_id').DataTable({
       // "paging": false,
@@ -52,8 +56,7 @@
       // "order": [[ 1, "desc" ]]
       }
     );	
-  }
-
+  
 //ps this is on react --look for equal in JS
 //google sheets
 /*componentDidMount() {
