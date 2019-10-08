@@ -1,5 +1,6 @@
 
   var dataset = [];
+  var dataset1 = [];
 
 
 
@@ -22,7 +23,7 @@
       console.log(e);
     }
     //delete unnecessary lines 
-    var dataset1 = dataset.filter(function(obj){
+    dataset1 = dataset.filter(function(obj){
       return obj.title !== "/title";
      });
    
@@ -33,9 +34,6 @@
      dataset1[index].earlieststartdate = obj.earlieststartdate.replace("T00:00:00Z","") ;
      dataset1[index].latestenddate = obj.latestenddate.replace("T00:00:00Z","") ;
     };
-  
-}
-    
     $('#table_id').DataTable({
       // "paging": false,
        data: dataset1,
@@ -56,6 +54,9 @@
       // "order": [[ 1, "desc" ]]
       }
     );	
+  
+}
+    
   
 //ps this is on react --look for equal in JS
 //google sheets
